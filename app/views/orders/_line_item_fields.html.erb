@@ -1,0 +1,9 @@
+
+<div class="nested-fields">
+<%= f.inputs do %>
+<%= f.collection_select :product, Product.all, :id, :title, prompt: true, required:true %>
+<%= f.input :price %>
+<%= f.input :quantity %>
+<%= link_to_remove_association "remove task", f %>
+<%end %>
+</div>

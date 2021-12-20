@@ -1,0 +1,44 @@
+
+<%if current_user.role== "Manager" %>
+  <h2 class="heading">Create Order</h2>
+
+  <%=link_to  '<i class="fa fa-angle-double-left"></i>'.html_safe, line_items_path, class:"space" %>
+  <%= render "devise/shared/error_messages", resource: @line_item %>
+  <%= form_with model:@line_item  do |f| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="form_style">
+      <div class="col-10 nested-fields" style="margin: 0 auto">
+<!--        <div class="field mb-3">-->
+<!--          <%#= f.label :description, class:"form_text" %><br/>-->
+          <%#= f.text_field :description, value: '', class:"form-control", required:true %>
+<!--        </div>-->
+        <div class="field mb-3">
+          <%= f.label :Product %><br/>
+
+          <%= f.collection_select :title, Product.all, :id, :title, prompt: true, required:true %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :price, class:"form_text" %><br/>
+          <%= f.number_field :price, value: '', class:"form-control", required:true %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :quantity, class:"form_text" %><br/>
+          <%= f.number_field :quantity, value: '', class:"form-control", required:true %>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :Total_Price, class:"form_text" %><br/>
+          <%= f.number_field :sub_total, value: '', class:"form-control", required:true %>
+        </div>
+        <div class="field mb-3">
+          <%= f.number_field :product_id, value: '1', class:"form-control" %>
+        </div>
+        <div class="field mb-3">
+          <%= f.number_field :product_id, value: '1', class:"form-control" %>
+        </div>
+        <div class="actions" style="margin-bottom: 10px">
+          <%= f.submit "Place Order", class:"btn btn-info" %>
+        </div>
+      </div>
+    </div>
+    <%end %>
+<%end %>

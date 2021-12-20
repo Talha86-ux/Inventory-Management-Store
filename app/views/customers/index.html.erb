@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="heading">Customers</h1>
+
+<table class="table table-striped table-hover space">
+  <thead class="thead-light">
+    <tr>
+      <th>Name</th>
+      <th>Cnic</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.cnic %></td>
+
+        <%c = Company.where(assign_manager: current_user.id).first %>
+
+        <td><%= link_to 'Edit', "/companies/#{c.id}/customers/#{customer.id}/edit" %></td>
+<!--        "/companies/#{c.id}/customers"-->
+        <td><%= link_to 'Destroy', "/companies/#{c.id}/customers/#{customer.id}",  method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_company_customer_path %>

@@ -1,0 +1,34 @@
+<nav class="navbar  navbar-expand-lg text-uppercase fixed-top  layouts text-white" id="mainNav">
+  <div class="container">
+
+    <%=link_to 'Inventory Management System', root_path, class:"navbar-brand layouts clr" %>
+    <button class="navbar-toggler  font-weight-bold layouts  rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto layouts">
+        <%if user_signed_in? %>
+          <%if current_user.role=="Admin" %>
+            <li class="nav-item mx-0 mx-lg-1"><%=link_to 'Add New Manager',users_new_path, class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr"%></li>
+            <li class="nav-item mx-0 mx-lg-1"><%=link_to 'New Company',new_company_path,  class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr"%></li>
+
+
+          <%else %>
+          <%c = Company.where(assign_manager: current_user.id).first %>
+            <li class="nav-item mx-0 mx-lg-1"><%=link_to 'Customers',"/companies/#{c.id}/customers" , class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr"%></li>
+            <li class="nav-item mx-0 mx-lg-1"><%=link_to 'Suppliers',"/companies/#{c.id}/suppliers",  class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr"%></li>
+            <li class="nav-item mx-0 mx-lg-1"><%=link_to 'Products',"/companies/#{c.id}/products",  class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr"%></li>
+            <li class="nav-item mx-0 mx-lg-1"><%=link_to 'Orders',orders_path,  class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr"%></li>
+          <%end %>
+          <li class="nav-item mx-0 mx-lg-1"><%=link_to 'Edit Profile', edit_user_registration_path, class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr"%></li>
+          <li class="nav-item mx-0 mx-lg-1"><%=link_to 'Company Details', companies_path,  class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr"%></li>
+          <li class="nav-item mx-0 mx-lg-1"><%=link_to 'Sign out', destroy_user_session_path,class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr" , :method => :delete %></li>
+        <%else %>
+          <li class="nav-item mx-0 mx-lg-1"><%= link_to 'Sign Up ',new_user_registration_path, class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr" %></li>
+          <li class="nav-item mx-0 mx-lg-1"><%= link_to 'Sign In ',user_session_path, class:"nav-link py-3 px-0 px-lg-3 rounded layouts clr" %></li>
+        <%end %>
+      </ul>
+    </div>
+  </div>
+</nav>

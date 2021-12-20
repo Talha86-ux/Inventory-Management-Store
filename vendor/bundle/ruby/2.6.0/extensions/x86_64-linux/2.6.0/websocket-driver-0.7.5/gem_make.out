@@ -1,0 +1,15 @@
+current directory: /home/engin-tech/inventory_store/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/home/engin-tech/.rvm/rubies/ruby-2.6.3/bin/ruby -I /home/engin-tech/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20211220-504692-eg6n1q.rb extconf.rb
+creating Makefile
+
+current directory: /home/engin-tech/inventory_store/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/engin-tech/inventory_store/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /home/engin-tech/inventory_store/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20211220-504692-19ewv7e

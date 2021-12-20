@@ -1,0 +1,31 @@
+<%if current_user.role== "Admin" %>
+  <h2 class="heading">Add a new Employee</h2>
+
+  <%= render "devise/shared/error_messages", resource: @company %>
+  <%= form_for  @company, url: companies_path do |f| %>
+    <div class="form_style">
+      <div class="col-10" style="margin: 0 auto">
+        <div class="field mb-3">
+          <%= f.label :name %><br/>
+          <%= f.text_field :name, class:"form-control", required:true %>
+        </div>
+
+        <div class="field mb-3">
+          <%= f.label :business_domain %><br/>
+          <%= f.select :business_domain, options_for_select([ "Clothing", "Food", "Medicine", "Sports", "Electronics", "Furniture" ])%>
+        </div>
+        <div class="field mb-3">
+          <%= f.label :assign_manager %><br/>
+
+          <%= f.collection_select :assign_manager, User.where(role:"Manager"), :id, :name, prompt: true, required:true %>
+        </div>
+        <div class="field mb-3">
+          <%= f.number_field :user_id, value: current_user.id, class:"form-control", type:"Hidden" %>
+        </div>
+        <div class="actions" style="margin-bottom: 10px">
+          <%= f.submit "Create", class:"btn btn-info" %>
+        </div>
+      </div>
+    </div>
+    <%end %>
+ <%end %>
