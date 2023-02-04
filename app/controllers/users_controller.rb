@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :action_params, only: [:show, :edit, :destroy]
+  before_action :action_params, only: %i[show edit destroy]
 
   def index
     @users = User.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
@@ -24,8 +25,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @user = User.find_by(id: params[:id])
@@ -38,14 +38,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    #@user = User.find_by(id: params[:id])
+    # @user = User.find_by(id: params[:id])
     @user.destroy
     redirect_to root_path
   end
+
   private
+
   def action_params
     @user = User.find(params[:id])
   end
+
   def user_params
     params.require(:user).permit(:name, :email, :role, :id, :password)
   end

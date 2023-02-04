@@ -34,3 +34,5 @@ Style/WordArray:
 Style/SymbolArray:
   Enabled: false
   MinSize: 3
+Documentation:
+  Enabled: false

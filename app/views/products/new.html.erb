@@ -24,8 +24,8 @@
         </div>
 
         <div class="field mb-3">
-          <%#s = Supplier.find_by(@supplier) %>
-          <%#= f.number_field :supplier_id, value: s.id, class:"form-control", type:"Hidden"%>
+          <%s = Supplier.find_by(@supplier) %>
+          <%= f.number_field :supplier_id, value: s.id, class:"form-control", type:"Hidden"%>
         </div>
         <div class="actions" style="margin-bottom: 10px">
           <%= f.submit "Create", class:"btn btn-info" %>

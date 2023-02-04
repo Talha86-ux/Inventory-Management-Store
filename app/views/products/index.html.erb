@@ -15,24 +15,13 @@
     <tbody>
     <%@products.each do |p| %>
       <tr>
-
-
         <td><%=p.title %></td>
         <td><%=p.description %></td>
         <td><%=p.quantity %></td>
-
-
-        <%#= p.supplied_by %>
-        <% if p.supplied_by != nil %>
-        <%supplier_name= Supplier.find_by_id(p.supplied_by) %>
-
-        <td><%=supplier_name%></td>
-        <% else %>
-          <td> Not </td>
-          <% end %>
+        <%supplier= Supplier.find_by(id: p.supplied_by) %>
+        <td><%=supplier.name%></td>
         <%c = Company.where(assign_manager: current_user.id).first %>
-<!--        <td><%#= link_to 'Edit', edit_company_product_path(p)%></td>-->
-        <td><%= link_to 'Edit Product', "/companies/#{c.id}/products/#{p.id}/edit" %></td>
+        <td><%= link_to 'Edit', "/companies/#{c.id}/products/#{p.id}/edit" %></td>
         <td><%= link_to 'delete',
                         { controller: "products", action: "destroy", id: p.id },
                         data: { confirm: 'Are you sure?' },

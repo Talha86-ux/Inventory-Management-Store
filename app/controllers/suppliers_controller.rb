@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: %i[show edit update destroy]
 
@@ -7,8 +9,7 @@ class SuppliersController < ApplicationController
   end
 
   # GET /suppliers/1 or /suppliers/1.json
-  def show
-  end
+  def show; end
 
   # GET /suppliers/new
   def new
@@ -16,8 +17,7 @@ class SuppliersController < ApplicationController
   end
 
   # GET /suppliers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /suppliers or /suppliers.json
   def create
@@ -25,7 +25,7 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       if @supplier.save
-        format.html { redirect_to company_suppliers_path, notice: "Supplier was successfully created." }
+        format.html { redirect_to company_suppliers_path, notice: 'Supplier was successfully created.' }
         format.json { render :show, status: :created, location: @supplier }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class SuppliersController < ApplicationController
   def update
     respond_to do |format|
       if @supplier.update(supplier_params)
-        format.html { redirect_to company_suppliers_path, notice: "Supplier was successfully updated." }
+        format.html { redirect_to company_suppliers_path, notice: 'Supplier was successfully updated.' }
         format.json { render :show, status: :ok, location: @supplier }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,12 +51,13 @@ class SuppliersController < ApplicationController
   def destroy
     @supplier.destroy
     respond_to do |format|
-      format.html { redirect_to company_suppliers_path, notice: "Supplier was successfully destroyed." }
+      format.html { redirect_to company_suppliers_path, notice: 'Supplier was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_supplier
     @supplier = Supplier.find(params[:id])
