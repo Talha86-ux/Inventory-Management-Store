@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class LineItemsController < ApplicationController
   def index
     @line_items = LineItem.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @line_item = LineItem.new
@@ -20,18 +21,18 @@ class LineItemsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
-  def destroy
-  end
+  def destroy; end
+
   private
+
   def line_items_params
     params.require(:line_item).permit(:supplier_id, :price, :quantity, :total_price, :product)
   end
+
   def action_params
     @product = LineItem.find(params[:id])
   end

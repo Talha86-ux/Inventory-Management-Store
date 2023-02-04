@@ -34,3 +34,6 @@ Lint/UnusedMethodArgument:
 # Offense count: 128
 Lint/Void:
   Enabled: false
+
+Documentation:
+  Enabled: false

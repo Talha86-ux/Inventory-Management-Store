@@ -52,3 +52,6 @@ Style/MutableConstant:
 
 Style/ExpandPathArguments:
   Enabled: false
+  
+Documentation:
+  Enabled: false

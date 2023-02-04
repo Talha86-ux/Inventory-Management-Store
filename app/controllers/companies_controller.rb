@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 class CompaniesController < ApplicationController
   def index
-    if current_user.role == "Admin"
-      @companies = Company.all
-    else
-      @companies = Company.where(assign_manager: current_user.id)
-    end
+    @companies = if current_user.role == 'Admin'
+                   Company.all
+                 else
+                   Company.where(assign_manager: current_user.id)
+                 end
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @company = Company.new
@@ -24,18 +25,18 @@ class CompaniesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def destroy
     @company = Company.find(params[:id])
     @company.destroy
     redirect_to companies_path
   end
+
   private
+
   def company_params
     params.require(:company).permit(:name, :business_domain, :user_id, :assign_manager)
   end

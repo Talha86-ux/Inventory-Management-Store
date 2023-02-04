@@ -98,3 +98,6 @@ Style/StringLiterals:
 
 Style/TrivialAccessors:
   Enabled: false
+
+Documentation:
+  Enabled: false
