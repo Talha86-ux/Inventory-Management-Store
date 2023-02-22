@@ -8,8 +8,6 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
-  def show; end
-
   def new
     @order = Order.new
     @order.line_items.build

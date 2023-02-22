@@ -16,8 +16,6 @@
 //= require_tree .
 //= require cocoon
 
-function saySomething(){
-    let msg = 'Welcome User';
-    console.log(msg);
-}
-saySomething();
+//= require jquery3
+//= require popper
+//= require bootstrap-sprockets
