@@ -2,14 +2,13 @@
 
 class CompaniesController < ApplicationController
   def index
-    @companies = if current_user.role == 'Admin'
-                   Company.all
-                 else
-                   Company.where(assign_manager: current_user.id)
-                 end
+    if user_signed_in?
+      @companies = current_user.role == 'Admin' ? Company.all : Company.where(assign_manager: current_user.id)
+      Company.all
+    else
+      redirect_to new_user_session_path
+    end
   end
-
-  def show; end
 
   def new
     @company = Company.new

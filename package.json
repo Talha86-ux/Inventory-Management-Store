@@ -1,5 +1,8 @@
 {
   "name": "inventory_store",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.3.0-alpha1"
+  }
 }
