@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
 
     if @product.save
       redirect_to company_products_path
+      InventoryStatusJob.perform_now
     else
       flash[:notice] = @product.errors.full_messages
       render :new
