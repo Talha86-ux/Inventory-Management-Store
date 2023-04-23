@@ -1,8 +1,10 @@
-<h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+  <h3> Registration Form</h3>
+  <div class="formContainer">
+  <hr/>
+  <div class="container">
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true%>
@@ -30,7 +32,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "login"  %>
   </div>
 <% end %>
 
