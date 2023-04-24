@@ -12,20 +12,19 @@
     <th>Tax</th>
     <th>Order No</th>
     <th>Order Details</th>
-    <th></th>
     <th>Sub Total</th>
 
     </thead>
     <tbody>
 
     <%@orders.each do |o| %>
-<!--        <td><%#=o.customer_list %></td>-->
+
       <tr>
         <% order = o.customer_list %>
 
-        <%abc= Customer.find_by(order) %>
+        <%customer= Customer.find_by(order) %>
         <%line_items = Order.find_by(line_items) %>
-        <td><%= abc.name%></td>
+        <td><%= customer&.name%></td>
         <td><%= o.invoice_no%></td>
         <td><%= o.invoice_date%></td>
         <td><%= o.tax%>%</td>
@@ -39,19 +38,13 @@
         <% end%>
       </ul>
       </td>
-        <%# s = p.supplied_by %>
+        <%# s = o.supplied_by %>
 
-        <%#supplier_name= Supplier.find_by(s) %>
+        <%#supplier= Supplier.find_by(s) %>
 
-<!--        <td><%#=supplier_name.name%></td>-->
+       <td><%#=supplier.name%></td>
 
 
-<!--        <td><%#= link_to 'Edit', edit_product_path(p)%></td>-->
-        <td><%= link_to 'delete',
-                        { controller: "orders", action: "destroy", id: o.id },
-                        data: { confirm: 'Are you sure?' },
-                        method: :delete, class:"icon_color" %>
-        </td>
     <%end %>
     </tr>
     </tbody>
