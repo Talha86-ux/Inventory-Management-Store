@@ -10,8 +10,15 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  primary:
+    <<: *default
+    database: db/development.sqlite3
+
+  inventory_store:
+    adapter: postgresql
+    url: <%= ENV['INVENTORY_STORE_DATABASE_URL'] %>
+    pool: 5
+    ssl_mode: require
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
