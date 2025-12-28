@@ -1,5 +1,7 @@
 class InventoryRecord < ApplicationRecord
   self.abstract_class = true
 
-  establish_connection :inventory_store
+  def self.connection
+    @connection ||= establish_connection(:inventory_store).connection
+  end
 end
