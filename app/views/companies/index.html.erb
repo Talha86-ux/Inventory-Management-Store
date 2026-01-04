@@ -17,8 +17,13 @@
         <td><%=c.name %></td>
         <td><%=c.business_domain %></td>
         <% manager = c.assign_manager %>
-        <%manager_name= User.find(manager) %>
-        <td><%=manager_name.name %></td>
+        <% if manager.nil? %>
+          <% manager_name= "Not Assigned" %>
+          <td><%=manager_name %></td>
+        <% else %>
+          <%manager_name= User.find_by_id(manager) %>
+          <td><%=manager_name&.name %></td>
+        <% end %>
         <td><%= link_to 'delete',
                         { controller: "companies", action: "destroy", id: c.id },
                         data: { confirm: 'Are you sure?' },
